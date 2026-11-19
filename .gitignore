@@ -1,0 +1,8 @@
+*.pdf
+!assets/cv-yoan-guillemot.pdf
+tools/
+.claude/
+__pycache__/
+.DS_Store
+Thumbs.db
+!assets/dossier-strategie-recul.pdf

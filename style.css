@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Anton SC";
-  src: url("../assets/fonts/anton-sc.woff2") format("woff2");
+  src: url("assets/fonts/anton-sc.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Archivo";
-  src: url("../assets/fonts/archivo.woff2") format("woff2");
+  src: url("assets/fonts/archivo.woff2") format("woff2");
   font-weight: 400 700;
   font-display: swap;
 }
@@ -2085,50 +2085,4 @@ h1 .name,
 .legal h1,
 .opening-line {
   letter-spacing: 0.005em;
-}
-
-/* 3x1000: two layered compositions on the dark ground */
-#clip-3x1000 .photo {
-  --r: 14px;
-}
-
-#clip-3x1000 .stage figure > a {
-  box-shadow:
-    0 2px 6px rgb(0 0 0 / 0.35),
-    0 24px 48px -18px rgb(0 0 0 / 0.75),
-    0 60px 100px -40px rgb(0 0 0 / 0.8);
-}
-
-#clip-a [data-depth="main"] { grid-column: 1 / 11; }
-#clip-a [data-depth="back"] { grid-column: 9 / 13; margin-top: -10%; }
-#clip-a [data-depth="front"] { grid-column: 7 / 12; align-self: end; margin-bottom: -14%; }
-#clip-a [data-depth="front-alt"] { grid-column: 1 / 5; align-self: end; margin-bottom: -18%; }
-
-#clip-b [data-depth="main"] { grid-column: 3 / 13; }
-#clip-b [data-depth="back"] { grid-column: 10 / 13; margin-top: -9%; }
-#clip-b [data-depth="back-alt"] { grid-column: 1 / 4; margin-top: 6%; }
-#clip-b [data-depth="front"] { grid-column: 1 / 6; align-self: end; margin-bottom: -12%; }
-#clip-b [data-depth="front-alt"] { grid-column: 8 / 12; align-self: end; margin-bottom: -16%; }
-
-@media (min-width: 64em) {
-  #clip-3x1000 .head {
-    grid-column: 1 / -1;
-  }
-
-  #clip-3x1000 .text {
-    grid-column: 1 / 5;
-    grid-row: 2;
-    padding-top: 4rem;
-  }
-
-  #clip-3x1000 #clip-a {
-    grid-column: 5 / -1;
-    grid-row: 2;
-  }
-
-  #clip-3x1000 #clip-b {
-    grid-column: 1 / 11;
-    grid-row: 3;
-    margin-top: clamp(4rem, 8vw, 8rem);
-  }
 }
