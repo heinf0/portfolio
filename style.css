@@ -143,10 +143,10 @@ a {
 .label,
 .timeline time,
 .carousel-hint {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
 }
 
 .site-header {
@@ -321,13 +321,6 @@ h1 .name {
   height: 0.5rem;
   border-radius: 50%;
   background: var(--red);
-  animation: pulse 2.4s var(--ease) infinite;
-}
-
-@keyframes pulse {
-  50% {
-    opacity: 0.25;
-  }
 }
 
 .work,
@@ -1063,10 +1056,6 @@ body:has(.viewer[open]) {
   transform: scale(calc(1.12 - 0.12 * var(--fe, var(--e, 1))));
 }
 
-.js .feature-photo img {
-  transform: scale(calc(1.18 - 0.18 * var(--e, 1)));
-}
-
 .js .track .poster {
   opacity: calc(0.3 + 0.7 * var(--e, 1));
   transform: scale(calc(0.86 + 0.14 * var(--e, 1)));
@@ -1278,7 +1267,6 @@ body:has(.viewer[open]) {
   .js .stage figure,
   .js .stage figure img,
   .js .portrait img,
-  .js .feature-photo img,
   .js .timeline li,
   .js .facts h3,
   .js .facts dt,
@@ -1487,8 +1475,7 @@ body:has(.viewer[open]) {
   scroll-snap-align: start;
 }
 
-.set-card h3,
-.panel h3 {
+.set-card h3 {
   font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.6rem);
   font-weight: 600;
   line-height: 1.05;
@@ -1529,84 +1516,6 @@ body:has(.viewer[open]) {
   }
 
   .track .poster a:hover img {
-    scale: 1.03;
-  }
-}
-
-.feature {
-  display: grid;
-  margin-top: var(--space);
-}
-
-.feature-photo {
-  grid-area: 1 / 1;
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  padding: 5rem 0 1.25rem;
-}
-
-.feature-photo a {
-  display: block;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  cursor: zoom-in;
-}
-
-.feature-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: scale 0.8s var(--ease-out);
-}
-
-.feature-panels {
-  grid-area: 1 / 1;
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 45svh;
-  align-content: start;
-  padding: 70svh clamp(1rem, 4vw, 3.5rem) 30svh;
-}
-
-.panel {
-  display: grid;
-  gap: 0.875rem;
-  width: min(100%, 30rem);
-  padding: clamp(1.25rem, 3vw, 2.25rem);
-  border-radius: 16px;
-  background: rgb(24 23 23 / 0.72);
-  backdrop-filter: blur(18px) saturate(1.3);
-  -webkit-backdrop-filter: blur(18px) saturate(1.3);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), var(--shadow);
-}
-
-.panel.shots {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-  justify-self: end;
-  padding: 0.75rem;
-}
-
-.panel.shots a {
-  display: block;
-  overflow: hidden;
-  border-radius: 8px;
-  cursor: zoom-in;
-}
-
-.panel.shots img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  transition: scale 0.6s var(--ease-out);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .feature a:hover img {
     scale: 1.03;
   }
 }
@@ -1663,9 +1572,6 @@ body:has(.viewer[open]) {
     scroll-snap-type: none;
   }
 
-  .panel.shots {
-    width: min(100%, 34rem);
-  }
 }
 
 .progress {
@@ -1870,10 +1776,6 @@ body:has(.viewer[open]) {
   transform: translate3d(0, calc((1 - var(--e, 1)) * 2.5rem), 0);
 }
 
-.feature-panels .panel.shots + .panel.shots {
-  justify-self: start;
-}
-
 @media (min-width: 48em) {
   .records {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2008,7 +1910,7 @@ h3.split span {
   margin-top: clamp(8rem, 18vw, 16rem);
 }
 
-#interfaces .stage {
+:is(#interfaces, #direction-artistique) .stage {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: start;
@@ -2019,11 +1921,11 @@ h3.split span {
   overflow: visible;
 }
 
-.js #interfaces .stage[data-reveal] {
+.js :is(#interfaces, #direction-artistique) .stage[data-reveal] {
   clip-path: none;
 }
 
-#interfaces :where(.stage figure) {
+:is(#interfaces, #direction-artistique) :where(.stage figure) {
   --speed: 14;
   grid-row: 1;
   grid-column: 1 / -1;
@@ -2031,9 +1933,9 @@ h3.split span {
   translate: 0 calc((0.5 - var(--pp, 0.5)) * var(--speed) * 1vh + var(--lift, 0px));
 }
 
-#interfaces .stage figure > a,
-#interfaces .browser,
-#interfaces .board > a {
+:is(#interfaces, #direction-artistique) .stage figure > a,
+:is(#interfaces, #direction-artistique) .browser,
+:is(#interfaces, #direction-artistique) .board > a {
   box-shadow:
     0 1px 2px rgb(24 23 23 / 0.06),
     0 8px 16px -6px rgb(24 23 23 / 0.12),
@@ -2057,27 +1959,27 @@ h3.split span {
   justify-self: stretch;
 }
 
-#interfaces [data-depth="main"] {
+:is(#interfaces, #direction-artistique) [data-depth="main"] {
   --speed: 12;
   z-index: 1;
 }
 
-#interfaces [data-depth^="back"] {
+:is(#interfaces, #direction-artistique) [data-depth^="back"] {
   --speed: 5;
   z-index: 0;
 }
 
-#interfaces [data-depth^="front"] {
+:is(#interfaces, #direction-artistique) [data-depth^="front"] {
   --speed: 34;
   z-index: 2;
 }
 
-.js #interfaces .stage figure img {
+.js :is(#interfaces, #direction-artistique) .stage figure img {
   transform: scale(calc(1.16 - 0.16 * clamp(0, var(--pp, 1) * 1.8, 1)));
   transform-origin: 50% 40%;
 }
 
-#interfaces .project .head h3 {
+:is(#interfaces, #direction-artistique) .project .head h3 {
   max-width: none;
   font-size: clamp(2.3rem, 1rem + 4.6vw, 6rem);
   line-height: 0.98;
@@ -2085,7 +1987,7 @@ h3.split span {
   translate: calc((0.5 - var(--pp, 0.5)) * 9vw) 0;
 }
 
-#interfaces .project .text {
+:is(#interfaces, #direction-artistique) .project .text {
   translate: 0 calc((0.5 - var(--pp, 0.5)) * -10vh);
 }
 
@@ -2122,7 +2024,7 @@ h3.split span {
     grid-row: 1;
   }
 
-  #interfaces .project .text {
+  :is(#interfaces, #direction-artistique) .project .text {
     grid-column: 1 / 5;
     grid-row: 2;
     padding-top: 4rem;
@@ -2156,11 +2058,11 @@ h3.split span {
     --speed: 10;
   }
 
-  #interfaces .project .head h3 {
+  :is(#interfaces, #direction-artistique) .project .head h3 {
     translate: calc((0.5 - var(--pp, 0.5)) * 6vw) 0;
   }
 
-  #interfaces .project .text {
+  :is(#interfaces, #direction-artistique) .project .text {
     translate: none;
   }
 }
@@ -2168,7 +2070,7 @@ h3.split span {
 @media (prefers-reduced-motion: reduce) {
   #interfaces .stage figure,
   #interfaces .project .head h3,
-  #interfaces .project .text {
+  :is(#interfaces, #direction-artistique) .project .text {
     translate: none;
   }
 
@@ -2183,4 +2085,50 @@ h1 .name,
 .legal h1,
 .opening-line {
   letter-spacing: 0.005em;
+}
+
+/* 3x1000: two layered compositions on the dark ground */
+#clip-3x1000 .photo {
+  --r: 14px;
+}
+
+#clip-3x1000 .stage figure > a {
+  box-shadow:
+    0 2px 6px rgb(0 0 0 / 0.35),
+    0 24px 48px -18px rgb(0 0 0 / 0.75),
+    0 60px 100px -40px rgb(0 0 0 / 0.8);
+}
+
+#clip-a [data-depth="main"] { grid-column: 1 / 11; }
+#clip-a [data-depth="back"] { grid-column: 9 / 13; margin-top: -10%; }
+#clip-a [data-depth="front"] { grid-column: 7 / 12; align-self: end; margin-bottom: -14%; }
+#clip-a [data-depth="front-alt"] { grid-column: 1 / 5; align-self: end; margin-bottom: -18%; }
+
+#clip-b [data-depth="main"] { grid-column: 3 / 13; }
+#clip-b [data-depth="back"] { grid-column: 10 / 13; margin-top: -9%; }
+#clip-b [data-depth="back-alt"] { grid-column: 1 / 4; margin-top: 6%; }
+#clip-b [data-depth="front"] { grid-column: 1 / 6; align-self: end; margin-bottom: -12%; }
+#clip-b [data-depth="front-alt"] { grid-column: 8 / 12; align-self: end; margin-bottom: -16%; }
+
+@media (min-width: 64em) {
+  #clip-3x1000 .head {
+    grid-column: 1 / -1;
+  }
+
+  #clip-3x1000 .text {
+    grid-column: 1 / 5;
+    grid-row: 2;
+    padding-top: 4rem;
+  }
+
+  #clip-3x1000 #clip-a {
+    grid-column: 5 / -1;
+    grid-row: 2;
+  }
+
+  #clip-3x1000 #clip-b {
+    grid-column: 1 / 11;
+    grid-row: 3;
+    margin-top: clamp(4rem, 8vw, 8rem);
+  }
 }

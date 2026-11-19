@@ -108,18 +108,18 @@ const seen = new IntersectionObserver((entries) => {
 }, { rootMargin: "15% 0px 15% 0px" });
 
 document
-  .querySelectorAll("#interfaces .project, .split, #interfaces .stage figure, [data-reveal], .timeline li, .facts h3, .facts dt, .facts dd, .tools, .feature, .track .poster, .set-card, main > section:not([data-pin])")
+  .querySelectorAll(":is(#interfaces, #direction-artistique) .project, .split, :is(#interfaces, #direction-artistique) .stage figure, [data-reveal], .timeline li, .facts h3, .facts dt, .facts dd, .tools, .track .poster, .set-card, main > section:not([data-pin])")
   .forEach((el) => seen.observe(el));
 
 const follow = () => {
   for (const el of live) {
-    if (el.matches("#interfaces .project")) {
+    if (el.matches(":is(#interfaces, #direction-artistique) .project")) {
       const top = layoutTop(el);
       el.style.setProperty("--pp", clamp01((innerHeight - top) / (innerHeight + el.offsetHeight)).toFixed(4));
     } else if (el.classList.contains("split")) {
       const top = layoutTop(el);
       el.style.setProperty("--w", clamp01((innerHeight * 0.92 - top) / (innerHeight * 0.4 + el.offsetHeight)).toFixed(3));
-    } else if (el.matches("#interfaces .stage figure")) {
+    } else if (el.matches(":is(#interfaces, #direction-artistique) .stage figure")) {
       el.style.setProperty("--e", clamp01((innerHeight * 0.98 - layoutTop(el)) / (innerHeight * 0.6)).toFixed(3));
     } else if (el.closest(".track")) {
       const box = el.getBoundingClientRect();
